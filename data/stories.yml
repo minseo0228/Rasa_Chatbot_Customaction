@@ -1,0 +1,45 @@
+version: "3.1"
+
+stories:
+- story: Book Flight
+  steps:
+  - intent: book_flight
+  - action: utter_ask_month
+  - intent: inform
+  - slot_was_set:
+    - month: "January"  # 실제로 사용될 월
+  - action: utter_ask_origin_destination
+  - intent: inform
+  - slot_was_set:
+    - origin: "Seoul"  # 실제로 사용될 출발지
+    - destination: "New York"  # 실제로 사용될 목적지
+  - action: action_find_flight
+  - action: utter_ask_reservation_confirmation
+  - intent: affirm
+  - action: utter_ask_flight_id_for_reservation
+  - intent: inform
+  - slot_was_set:
+    - flight_id: "JAN001"  # 사용자가 선택한 실제 비행기표 ID
+  - action: utter_ask_customer_name
+  - intent: inform
+  - slot_was_set:
+    - customer_name: "John Doe"  # 사용자가 입력하는 예약자 이름
+  - action: action_make_reservation
+
+- story: Check Reservation
+  steps:
+  - intent: check_reservation
+  - action: utter_ask_customer_name
+  - intent: inform
+  - slot_was_set:
+    - customer_name: "John Doe"  # 실제로 확인할 예약자 이름
+  - action: action_check_reservation
+
+- story: Cancel Reservation
+  steps:
+  - intent: cancel_reservation
+  - action: utter_ask_customer_name
+  - intent: inform
+  - slot_was_set:
+    - customer_name: "John Doe"  # 실제로 취소할 예약자 이름
+  - action: action_cancel_reservation

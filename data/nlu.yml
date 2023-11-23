@@ -1,0 +1,30 @@
+version: "3.1"
+
+nlu:
+- intent: find_flight
+  examples: |
+    - I want to find a flight from [origin] to [destination]
+    - Show me flights from [origin] to [destination]
+    - Flights from [origin] to [destination]
+    - Any flights available from [origin] to [destination]
+
+- intent: make_reservation
+  examples: |
+    - I want to book a flight
+    - reservation
+    - I'm looking to make a flight reservation
+
+
+- intent: check_reservation
+  examples: |
+    - Check my reservation
+    - Show my reservations
+    - Do I have any reservations?
+    - Find my booked flights
+
+- intent: cancel_reservation
+  examples: |
+    - Cancel my reservation
+    - I want to cancel a flight booking
+    - Remove my booked flight
+    - Cancel reservation for flight

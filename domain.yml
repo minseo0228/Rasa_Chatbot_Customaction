@@ -1,0 +1,43 @@
+version: "3.1"
+
+intents:
+  - find_flight
+  - make_reservation
+  - check_reservation
+  - cancel_reservation
+  # 기타 필요한 인텐트 추가
+
+slots:
+  month:
+    type: text
+  origin:
+    type: text
+  destination:
+    type: text
+  flight_id:
+    type: text
+  customer_name:
+    type: text
+
+
+actions:
+- action_find_flight
+- action_make_reservation
+- action_check_reservation
+- action_cancel_reservation
+
+templates:
+  utter_ask_month:
+    - text: "Which month are you looking to fly?"
+  utter_ask_origin_destination:
+    - text: "Please enter the departure and destination cities."
+  utter_ask_reservation_confirmation:
+    - text: "Would you like to proceed with the reservation?"
+  utter_ask_flight_id_for_reservation:
+    - text: "Which flight would you like to reserve? Please provide the flight ID."
+  utter_ask_customer_name:
+    - text: "Please enter your name for the reservation."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
