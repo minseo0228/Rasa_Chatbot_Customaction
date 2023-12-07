@@ -1,12 +1,44 @@
 version: "3.1"
 
 nlu:
-- intent: find_flight
+- intent: inform_des_ori
   examples: |
-    - I want to find a flight from [origin] to [destination]
-    - Show me flights from [origin] to [destination]
-    - Flights from [origin] to [destination]
-    - Any flights available from [origin] to [destination]
+    - I want to find a flight from [Seoul](origin) to [Newyork](destination)
+    - I want to find a flight from [Seoul](origin) to [Tokyo](destination)
+    - I want to find a flight from [Seoul](origin) to [London](destination)
+    - I want to find a flight from [Tokyo](origin) to [Newyork](destination)
+    - I want to find a flight from [Tokyo](origin) to [Seoul](destination)
+    - I want to find a flight from [Tokyo](origin) to [London](destination)
+    - I want to find a flight from [London](origin) to [Newyork](destination)
+    - I want to find a flight from [London](origin) to [Tokyo](destination)
+    - I want to find a flight from [London](origin) to [Seoul](destination)
+    - I want to find a flight from [Newyork](origin) to [Tokyo](destination)
+    - I want to find a flight from [Newyork](origin) to [Seoul](destination)
+    - I want to find a flight from [Newyork](origin) to [London](destination)
+    - Show me flights from [Seoul](origin) to [Newyork](destination)
+    - Show me flights from [Seoul](origin) to [Tokyo](destination)
+    - Show me flights from [Seoul](origin) to [London](destination)
+    - Show me flights from [Tokyo](origin) to [Newyork](destination)
+    - Show me flights from [Tokyo](origin) to [Seoul](destination)
+    - Show me flights from [Tokyo](origin) to [London](destination)
+    - Show me flights from [London](origin) to [Newyork](destination)
+    - Show me flights from [London](origin) to [Tokyo](destination)
+    - Show me flights from [London](origin) to [Seoul](destination)
+    - Show me flights from [Newyork](origin) to [Tokyo](destination)
+    - Show me flights from [Newyork](origin) to [Seoul](destination)
+    - Show me flights from [Newyork](origin) to [London](destination)
+    - Show me flights from [Seoul](origin) to [Newyork](destination)
+    - Flights from [Seoul](origin) to [Tokyo](destination)
+    - Flights from [Seoul](origin) to [London](destination)
+    - Flights from [Tokyo](origin) to [Newyork](destination)
+    - Flights from [Tokyo](origin) to [Seoul](destination)
+    - Flights from [Tokyo](origin) to [London](destination)
+    - Flights from [London](origin) to [Newyork](destination)
+    - Flights from [London](origin) to [Tokyo](destination)
+    - Flights from [London](origin) to [Seoul](destination)
+    - Flights from [Newyork](origin) to [Tokyo](destination)
+    - Flights from [Newyork](origin) to [Seoul](destination)
+    - Flights from [Newyork](origin) to [London](destination)
 
 - intent: make_reservation
   examples: |
@@ -21,6 +53,9 @@ nlu:
     - Show my reservations
     - Do I have any reservations?
     - Find my booked flights
+    - check
+    - I want to check my reservation
+    - Check
 
 - intent: cancel_reservation
   examples: |
@@ -28,3 +63,80 @@ nlu:
     - I want to cancel a flight booking
     - Remove my booked flight
     - Cancel reservation for flight
+    - cancel
+    - I want to cancel my reservation
+    - Cancel
+
+- intent: imform_month
+  examples: |
+    - January
+    -	February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+
+- intent: affirm
+  examples: |
+    - yes
+  
+- intent: inform_flightid
+  examples: |
+    - UNRES001
+    - UNRES002
+    - UNRES003
+    - UNRES004
+    - UNRES005
+    - UNRES006
+    - UNRES007
+    - UNRES008
+    - UNRES009
+    - UNRES010
+    - UNRES011
+    - UNRES012
+    - UNRES013
+    - UNRES014
+    - UNRES015
+    - UNRES016
+    - UNRES017
+    - UNRES018
+    - UNRES019
+    - UNRES020
+    - UNRES021
+    - UNRES022
+    - UNRES023
+    - UNRES024
+    - UNRES025
+    - UNRES026
+    - UNRES027
+    - UNRES028
+    - UNRES029
+    - UNRES030
+  
+- intent: inform_name
+  examples: |
+    - Hong Gildong
+    - Kim Minseo
+    - Lee Yeonghee
+    - Park Youngsoo
+    - Jung Jihye
+    - Choi Seunghyun
+    - Han Jimin
+    - Song Mijin
+    - Ryu Jinwoo
+    - Jang Minho
+    - Kang Jiyoung
+    - Shin Hyunwoo
+    - Lim Eunji
+    - Oh Junho
+    - Yoon Seoyeon
+    - Heo Yeosol
+    - Yang gijoo
+
+

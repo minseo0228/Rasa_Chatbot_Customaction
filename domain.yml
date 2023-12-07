@@ -5,19 +5,40 @@ intents:
   - make_reservation
   - check_reservation
   - cancel_reservation
-  # 기타 필요한 인텐트 추가
 
+entities:
+  - month
+  - departure_city
+  - arrival_city
+  - customer_name
+  - flight_id
+  
 slots:
   month:
     type: text
+    mappings: 
+    - type: from_entity
+      entity: month 
   origin:
     type: text
+    mappings: 
+    - type: from_entity
+      entity: origin
   destination:
     type: text
+    mappings: 
+    - type: from_entity
+      entity: destination
   flight_id:
     type: text
+    mappings: 
+    - type: from_entity
+      entity: flight_id
   customer_name:
     type: text
+    mappings: 
+    - type: from_entity
+      entity: customer_name
 
 
 actions:
@@ -25,8 +46,13 @@ actions:
 - action_make_reservation
 - action_check_reservation
 - action_cancel_reservation
+- utter_ask_month
+- utter_ask_origin_destination
+- utter_ask_reservation_confirmation
+- utter_ask_flight_id_for_reservation
+- utter_ask_customer_name
 
-templates:
+responses:
   utter_ask_month:
     - text: "Which month are you looking to fly?"
   utter_ask_origin_destination:

@@ -6,7 +6,7 @@ from rasa_sdk.events import SlotSet
 
 class ActionFindFlight(Action):
     def name(self) -> Text:
-        return "action_find_flight"
+        return "action_find_flight" #name of customaction
 
     def run(self,
             dispatcher: CollectingDispatcher,
@@ -14,12 +14,13 @@ class ActionFindFlight(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         destination = tracker.get_slot('destination')
+        origin = tracker.get_slot('origin')
 
         # Connect to MySQL and retrieve available flights to the destination
         con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
         cur = con.cursor()
 
-        sql = f"SELECT * FROM flights WHERE destination = '{destination}'"
+        sql = f"SELECT * FROM flights WHERE destination = '{destination}'AND origin = '{origin}'"
         cur.execute(sql)
         result = cur.fetchall()
 
@@ -28,7 +29,7 @@ class ActionFindFlight(Action):
 
         con.close()
 
-        dispatcher.utter_message(text=f"Flights available to {destination}: {flight_list}. Would you like to make a reservation?")
+        dispatcher.utter_message(text=f"Flights available to {destination}-> {origin} : {flight_list}. Would you like to make a reservation?")
 
         return []
 
@@ -43,6 +44,8 @@ class ActionMakeReservation(Action):
 
         origin = tracker.get_slot('origin')
         destination = tracker.get_slot('destination')
+        name = tracker.get_slot('name')
+        flight_id = tracker.get_slot('flight_id')
 
         # Connect to MySQL and insert reservation into the database
         con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
@@ -55,7 +58,7 @@ class ActionMakeReservation(Action):
 
         con.close()
 
-        dispatcher.utter_message(text=f"Reservation made for {name} from {origin} to {destination}.")
+        dispatcher.utter_message(text=f"Reservation made for {name} from {origin} to {destination}. Your flight id is {flight_id}")
 
         return []
 
