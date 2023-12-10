@@ -67,7 +67,7 @@ nlu:
     - I want to cancel my reservation
     - Cancel
 
-- intent: imform_month
+- intent: inform_month
   examples: |
     - January
     -	February

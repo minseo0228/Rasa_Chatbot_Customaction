@@ -15,21 +15,39 @@ class ActionFindFlight(Action):
 
         destination = tracker.get_slot('destination')
         origin = tracker.get_slot('origin')
+        # month = tracker.get_slot('inform_month')
 
         # Connect to MySQL and retrieve available flights to the destination
-        con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
+        con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
+        print("connect")
 
-        sql = f"SELECT * FROM flights WHERE destination = '{destination}'AND origin = '{origin}'"
+        sql = f"SELECT * FROM flight WHERE destination = '{destination}'AND origin = '{origin}'"
         cur.execute(sql)
         result = cur.fetchall()
 
         flights = [f"Flight ID: {row['flight_id']} | Departure Time: {row['departure_time']}" for row in result]
+        # flights = [f"Flight ID: {row[0]} | Departure Time: {row[1]}" for row in result]  
         flight_list = ", ".join(flights)
+        print(f"Flights: {flights}")
+        print(f"Flight List: {flight_list}")
 
         con.close()
 
-        dispatcher.utter_message(text=f"Flights available to {destination}-> {origin} : {flight_list}. Would you like to make a reservation?")
+        if len(flights) > 0:
+            # 단일 메시지로 출력
+            if len(flights) == 1:
+                dispatcher.utter_message(text=f"Flight available to {destination} from {origin}: {flight_list}. Would you like to make a reservation?")
+
+            # 복수의 메시지로 반복 출력
+            else:
+                dispatcher.utter_message(text=f"Flights available to {destination} from {origin}:")
+                for flight_info in flights:
+                    dispatcher.utter_message(text=f"{flight_info}")
+                dispatcher.utter_message(text="Would you like to make a reservation?")
+
+        else:
+            dispatcher.utter_message(text=f"No flights available from {origin} to {destination}")
 
         return []
 
@@ -41,24 +59,24 @@ class ActionMakeReservation(Action):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        origin = tracker.get_slot('origin')
+        
+        inform_name = tracker.get_slot('inform_name')
+        flight_id = tracker.get_slot('inform_flightid')
         destination = tracker.get_slot('destination')
-        name = tracker.get_slot('name')
-        flight_id = tracker.get_slot('flight_id')
+        origin = tracker.get_slot('origin')
 
         # Connect to MySQL and insert reservation into the database
-        con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
+        con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
 
         # Assuming 'reservations' table with columns 'origin', 'destination', 'name', and 'flight_id'
-        sql = f"INSERT INTO reservations (origin, destination, name, flight_id) VALUES ('{origin}', '{destination}', '{name}', '{flight_id}')"
+        sql = f"INSERT INTO reservation (customer_customer_name, flight_flight_id) VALUES ( '{inform_name}', '{flight_id}')"
         cur.execute(sql)
         con.commit()
 
         con.close()
 
-        dispatcher.utter_message(text=f"Reservation made for {name} from {origin} to {destination}. Your flight id is {flight_id}")
+        dispatcher.utter_message(text=f"Reservation made for {inform_name} from {origin} to {destination}. Your flight id is {flight_id}")
 
         return []
 
@@ -71,22 +89,22 @@ class ActionCheckReservation(Action):
          tracker: Tracker,
          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        customer_name = tracker.get_slot('customer_name')
+        inform_name = tracker.get_slot('inform_name')
 
         # Connect to MySQL and retrieve reservations for the given customer
-        con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
+        con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
 
-        sql = f"SELECT * FROM reservations WHERE customer_name = '{customer_name}'"
+        sql = f"SELECT * FROM reservation WHERE customer_customer_name = '{inform_name}'"
         cur.execute(sql)
         result = cur.fetchall()
 
         if not result:
-            dispatcher.utter_message(text=f"No reservations found for {customer_name}.")
+            dispatcher.utter_message(text=f"No reservations found for {inform_name}.")
         else:
-            reservations = [f"Flight ID: {row['flight_id']}" for row in result]
+            reservations = [f"Flight ID: {row['flight_flight_id']}" for row in result]
             reservation_list = ", ".join(reservations)
-            dispatcher.utter_message(text=f"Reservations for {customer_name}: {reservation_list}")
+            dispatcher.utter_message(text=f"Reservations for {inform_name}: {reservation_list}")
 
         con.close()
 
@@ -101,14 +119,14 @@ class ActionCancelReservation(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        name = tracker.get_slot('name')
-        flight_id = tracker.get_slot('flight_id')
+        name = tracker.get_slot('inform_name')
+        flight_id = tracker.get_slot('inform_flightid')
 
         # Connect to MySQL and delete reservation from the database
-        con = pymysql.connect(host='localhost', user='root', password='your_password', db='your_db', charset='utf8')
+        con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
 
-        sql = f"DELETE FROM reservations WHERE name = '{name}' AND flight_id = '{flight_id}'"
+        sql = f"DELETE FROM reservation WHERE customer_customer_name = '{name}' AND flight_flight_id = '{flight_id}'"
         cur.execute(sql)
         con.commit()
 

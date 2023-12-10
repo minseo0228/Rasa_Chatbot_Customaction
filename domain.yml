@@ -1,44 +1,58 @@
 version: "3.1"
 
+# intents:
+#   - find_flight
+#   - make_reservation
+#   - check_reservation
+#   - cancel_reservation
+  
+
+# entities:
+#   - inform_month
+#   - destination
+#   - origin
+#   - inform_name
+#   - inform_flightid
 intents:
-  - find_flight
+  - inform_des_ori
   - make_reservation
   - check_reservation
   - cancel_reservation
+  - inform_month
+  - affirm
+  - inform_flightid
+  - inform_name
 
 entities:
-  - month
-  - departure_city
-  - arrival_city
-  - customer_name
-  - flight_id
+  - origin
+  - destination
   
 slots:
-  month:
+  inform_month:
     type: text
     mappings: 
-    - type: from_entity
-      entity: month 
+      - type: from_entity
+        entity: inform_month
   origin:
     type: text
     mappings: 
-    - type: from_entity
-      entity: origin
+      - type: from_entity
+        entity: origin
   destination:
     type: text
     mappings: 
-    - type: from_entity
-      entity: destination
-  flight_id:
+      - type: from_entity
+        entity: destination
+  inform_flightid:
     type: text
     mappings: 
-    - type: from_entity
-      entity: flight_id
-  customer_name:
+      - type: from_entity
+        entity: inform_flightid
+  inform_name:
     type: text
     mappings: 
-    - type: from_entity
-      entity: customer_name
+      - type: from_entity
+        entity: inform_name
 
 
 actions:
@@ -57,8 +71,8 @@ responses:
     - text: "Which month are you looking to fly?"
   utter_ask_origin_destination:
     - text: "Please enter the departure and destination cities."
-  utter_ask_reservation_confirmation:
-    - text: "Would you like to proceed with the reservation?"
+  # utter_ask_reservation_confirmation:
+  #   - text: "Would you like to proceed with the reservation?"
   utter_ask_flight_id_for_reservation:
     - text: "Which flight would you like to reserve? Please provide the flight ID."
   utter_ask_customer_name:
