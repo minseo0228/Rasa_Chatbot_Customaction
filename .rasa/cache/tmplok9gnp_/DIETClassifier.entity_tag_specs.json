@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-destination",
+      "2": "I-destination",
+      "3": "L-destination",
+      "4": "U-destination",
+      "5": "B-inform_flightid",
+      "6": "I-inform_flightid",
+      "7": "L-inform_flightid",
+      "8": "U-inform_flightid",
+      "9": "B-inform_name",
+      "10": "I-inform_name",
+      "11": "L-inform_name",
+      "12": "U-inform_name",
+      "13": "B-origin",
+      "14": "I-origin",
+      "15": "L-origin",
+      "16": "U-origin",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-destination": 1,
+      "I-destination": 2,
+      "L-destination": 3,
+      "U-destination": 4,
+      "B-inform_flightid": 5,
+      "I-inform_flightid": 6,
+      "L-inform_flightid": 7,
+      "U-inform_flightid": 8,
+      "B-inform_name": 9,
+      "I-inform_name": 10,
+      "L-inform_name": 11,
+      "U-inform_name": 12,
+      "B-origin": 13,
+      "I-origin": 14,
+      "L-origin": 15,
+      "U-origin": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

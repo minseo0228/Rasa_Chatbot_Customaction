@@ -1,31 +1,18 @@
 version: "3.1"
 
-# intents:
-#   - find_flight
-#   - make_reservation
-#   - check_reservation
-#   - cancel_reservation
-  
-
-# entities:
-#   - inform_month
-#   - destination
-#   - origin
-#   - inform_name
-#   - inform_flightid
 intents:
-  - inform_des_ori
+  - find_flight
   - make_reservation
   - check_reservation
   - cancel_reservation
-  - inform_month
-  - affirm
-  - inform_flightid
-  - inform_name
+  - inform_des_ori
 
 entities:
   - origin
   - destination
+  - infrom_name
+  - inform_month
+  - inform_flightid
   
 slots:
   inform_month:
@@ -61,22 +48,32 @@ actions:
 - action_check_reservation
 - action_cancel_reservation
 - utter_ask_month
-- utter_ask_origin_destination
 - utter_ask_reservation_confirmation
 - utter_ask_flight_id_for_reservation
 - utter_ask_customer_name
+- utter_ask_origin
+- utter_ask_destination
+- check_reservation
 
 responses:
   utter_ask_month:
     - text: "Which month are you looking to fly?"
   utter_ask_origin_destination:
     - text: "Please enter the departure and destination cities."
+  utter_ask_origin:
+    - text: "Please enter your departure point"
+  utter_ask_destination:
+    - text: "Please enter your destination point"
+  check_reservation:
+    - text: "Let's move on to the reservation stage"
   # utter_ask_reservation_confirmation:
   #   - text: "Would you like to proceed with the reservation?"
   utter_ask_flight_id_for_reservation:
-    - text: "Which flight would you like to reserve? Please provide the flight ID."
+    - text: "Let's move on to the reservation stage!! Which flight would you like to reserve? Please provide the flight ID. "
   utter_ask_customer_name:
     - text: "Please enter your name for the reservation."
+  utter_ask_flight_id_and_customer_name:
+    - text: "Let's move on to the reservation stage!! Which flight would you like to reserve? Please provide the flight ID. and provide your name please"
 
 session_config:
   session_expiration_time: 60

@@ -1,4 +1,5 @@
 import pymysql
+import random
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -15,7 +16,6 @@ class ActionFindFlight(Action):
 
         destination = tracker.get_slot('destination')
         origin = tracker.get_slot('origin')
-        # month = tracker.get_slot('inform_month')
 
         # Connect to MySQL and retrieve available flights to the destination
         con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
@@ -26,8 +26,8 @@ class ActionFindFlight(Action):
         cur.execute(sql)
         result = cur.fetchall()
 
-        flights = [f"Flight ID: {row['flight_id']} | Departure Time: {row['departure_time']}" for row in result]
-        # flights = [f"Flight ID: {row[0]} | Departure Time: {row[1]}" for row in result]  
+        # flights = [f"Flight ID: {row['flight_id']} | Departure Time: {row['departure_time']}" for row in result]
+        flights = [f"Flight ID: {row[0]} | Departure Time: {row[3]}" for row in result]  
         flight_list = ", ".join(flights)
         print(f"Flights: {flights}")
         print(f"Flight List: {flight_list}")
@@ -62,21 +62,21 @@ class ActionMakeReservation(Action):
         
         inform_name = tracker.get_slot('inform_name')
         flight_id = tracker.get_slot('inform_flightid')
-        destination = tracker.get_slot('destination')
-        origin = tracker.get_slot('origin')
+        # destination = tracker.get_slot('destination')
+        # origin = tracker.get_slot('origin')
 
         # Connect to MySQL and insert reservation into the database
         con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
-
+        index = random.randint(1, 100)
         # Assuming 'reservations' table with columns 'origin', 'destination', 'name', and 'flight_id'
-        sql = f"INSERT INTO reservation (customer_customer_name, flight_flight_id) VALUES ( '{inform_name}', '{flight_id}')"
+        sql = f"INSERT INTO reservation (reservation_id, customer_customer_name, flight_flight_id) VALUES ( '{index}','{inform_name}', '{flight_id}')"
         cur.execute(sql)
         con.commit()
 
         con.close()
 
-        dispatcher.utter_message(text=f"Reservation made for {inform_name} from {origin} to {destination}. Your flight id is {flight_id}")
+        dispatcher.utter_message(text=f"Reservation made for {inform_name}. Your flight id is {flight_id}")
 
         return []
 

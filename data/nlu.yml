@@ -40,6 +40,21 @@ nlu:
     - Flights from [Newyork](origin) to [Seoul](destination)
     - Flights from [Newyork](origin) to [London](destination)
 
+- intent: origin
+  examples: |
+    - Seoul
+    - Flights from Seoul
+    - Tokyo
+    - London
+    - Newyork
+  
+- intent: destination
+  examples: |
+    - Seoul
+    - Tokyo
+    - London
+    - Newyork
+
 - intent: make_reservation
   examples: |
     - I want to book a flight
@@ -139,4 +154,13 @@ nlu:
     - Heo Yeosol
     - Yang gijoo
 
-
+- intent: inform_for_reservation
+  examples: |
+    - Flight id is [UNRES001](inform_flightid) and my name is [Kim minseo](inform_name)
+    - I want to book [UNRES001](inform_flightid) and my name is [Kim minseo](inform_name)
+    - Flight id is [UNRES031](inform_flightid) and my name is [Kim minseo](inform_name)
+    - Flight id is [UNRES032](inform_flightid) and my name is [Kim minseo](inform_name)
+    - Flight id is [UNRES033](inform_flightid) and my name is [Kim minseo](inform_name)
+    - Flight id is [UNRES031](inform_flightid) and my name is [Hong Gildong](inform_name)
+    - Flight id is [UNRES032](inform_flightid) and my name is [Hong Gildong](inform_name)
+    - Flight id is [UNRES033](inform_flightid) and my name is [Hong Gildong](inform_name)

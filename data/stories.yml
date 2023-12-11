@@ -6,36 +6,46 @@ stories:
   - intent: make_reservation
   # - action: utter_ask_month
   # - intent: inform_month
-  # - or:
-  #   - slot_was_set:
-  #     - inform_month: "May"  # 실제로 사용될 월
+  #   entities:
+  #   - inform_month: "May"  # 실제로 사용될 월
+  # - action: utter_ask_origin
+  # - intent: origin
+  #   entities:
+  #   - origin: "Seoul"
+  # - action: utter_ask_destination
+  # - intent: destination
+  #   entities:
+  #   - destination: "Tokyo"
   - action: utter_ask_origin_destination
   - intent: inform_des_ori
-  - or:
-    - slot_was_set:
-      - origin: "Seoul"  # 실제로 사용될 출발지
-      - destination: "Tokyo"  # 실제로 사용될 목적지
+    entities: 
+      - origin
+      - destination
   - action: action_find_flight
-  - action: utter_ask_flight_id_for_reservation
-  - intent: inform_flightid
-  - or:
-    - slot_was_set:
-      - inform_flightid: "UNRES001"  # 사용자가 선택한 실제 비행기표 ID
-  - action: utter_ask_customer_name
-  - intent: inform_name
-  - or:
-    - slot_was_set:
-      - inform_name: "Kim Minseo"  # 사용자가 입력하는 예약자 이름
+  - action: check_reservation
+  - action: utter_ask_flight_id_and_customer_name
+  - intent: inform_for_reservation
+    entities:
+      - inform_flightid
+      - inform_name
+  # - action: utter_ask_flight_id_for_reservation
+  # - intent: inform_flightid
+  #   entities:
+  #   - inform_flightid: "UNRES001"  # 사용자가 선택한 실제 비행기표 ID
+  # - action: utter_ask_customer_name
+  # - intent: inform_name
+  #   entities:
+  #   - inform_name: "Kim Minseo"  # 사용자가 입력하는 예약자 이름
   - action: action_make_reservation
+
 
 - story: Check Reservation
   steps:
   - intent: check_reservation
   - action: utter_ask_customer_name
   - intent: inform_name
-  - or:
-    - slot_was_set:
-      - inform_name: "Kim Minseo"  # 실제로 확인할 예약자 이름
+    entities:
+    - inform_name: "Kim Minseo"  # 실제로 확인할 예약자 이름
   - action: action_check_reservation
 
 - story: Cancel Reservation
@@ -43,7 +53,38 @@ stories:
   - intent: cancel_reservation
   - action: utter_ask_customer_name
   - intent: inform_name
-  - or:
-    - slot_was_set:
-      - inform_name: "Kim Minseo"  # 실제로 취소할 예약자 이름
+    entities:
+    - inform_name: "Kim Minseo"   # 실제로 취소할 예약자 이름
   - action: action_cancel_reservation
+
+# stories:
+# - story: Book Flight
+#   steps:
+#   - intent: make_reservation
+#   # - action: utter_ask_month
+#   # - intent: inform_month
+#   # - or:
+#   #   - slot_was_set:
+#   #     - inform_month: "May"  # 실제로 사용될 월
+#   - action: utter_ask_origin
+#   - intent: origin
+#   - action: utter_ask_destination
+#   - intent: destination
+#   # - action: utter_ask_origin_destination
+#   # - intent: inform_des_ori
+#   # - or:
+#   #   - slot_was_set:
+#   #     - origin: "Seoul"  # 실제로 사용될 출발지
+#   #     - destination: "Tokyo"  # 실제로 사용될 목적지
+#   - action: action_find_flight
+#   - action: utter_ask_flight_id_for_reservation
+#   - intent: inform_flightid
+#   - or:
+#     - slot_was_set:
+#       - inform_flightid: "UNRES001"  # 사용자가 선택한 실제 비행기표 ID
+#   - action: utter_ask_customer_name
+#   - intent: inform_name
+#   - or:
+#     - slot_was_set:
+#       - inform_name: "Kim Minseo"  # 사용자가 입력하는 예약자 이름
+#   - action: action_make_reservation
