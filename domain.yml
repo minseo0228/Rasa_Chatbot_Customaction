@@ -6,20 +6,18 @@ intents:
   - check_reservation
   - cancel_reservation
   - inform_des_ori
+  - inform_for_reservation
+  - inform_name
+  - inform_flightid
 
 entities:
   - origin
   - destination
-  - infrom_name
+  - name
   - inform_month
-  - inform_flightid
+  - flightid
   
 slots:
-  inform_month:
-    type: text
-    mappings: 
-      - type: from_entity
-        entity: inform_month
   origin:
     type: text
     mappings: 
@@ -30,16 +28,16 @@ slots:
     mappings: 
       - type: from_entity
         entity: destination
-  inform_flightid:
+  flightid:
     type: text
     mappings: 
       - type: from_entity
-        entity: inform_flightid
-  inform_name:
+        entity: flightid
+  name:
     type: text
     mappings: 
       - type: from_entity
-        entity: inform_name
+        entity: name
 
 
 actions:
@@ -60,12 +58,6 @@ responses:
     - text: "Which month are you looking to fly?"
   utter_ask_origin_destination:
     - text: "Please enter the departure and destination cities."
-  utter_ask_origin:
-    - text: "Please enter your departure point"
-  utter_ask_destination:
-    - text: "Please enter your destination point"
-  check_reservation:
-    - text: "Let's move on to the reservation stage"
   # utter_ask_reservation_confirmation:
   #   - text: "Would you like to proceed with the reservation?"
   utter_ask_flight_id_for_reservation:
@@ -73,8 +65,9 @@ responses:
   utter_ask_customer_name:
     - text: "Please enter your name for the reservation."
   utter_ask_flight_id_and_customer_name:
-    - text: "Let's move on to the reservation stage!! Which flight would you like to reserve? Please provide the flight ID. and provide your name please"
-
+    - text: "Which flight would you like to reserve? Please provide the flight ID. and provide your name please"
+  utter_ask_flightid_and_name:
+    - text: "Tell me your name and flight id when you make a reservation"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

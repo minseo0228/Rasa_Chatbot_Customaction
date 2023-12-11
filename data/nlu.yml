@@ -103,64 +103,66 @@ nlu:
   
 - intent: inform_flightid
   examples: |
-    - UNRES001
-    - UNRES002
-    - UNRES003
-    - UNRES004
-    - UNRES005
-    - UNRES006
-    - UNRES007
-    - UNRES008
-    - UNRES009
-    - UNRES010
-    - UNRES011
-    - UNRES012
-    - UNRES013
-    - UNRES014
-    - UNRES015
-    - UNRES016
-    - UNRES017
-    - UNRES018
-    - UNRES019
-    - UNRES020
-    - UNRES021
-    - UNRES022
-    - UNRES023
-    - UNRES024
-    - UNRES025
-    - UNRES026
-    - UNRES027
-    - UNRES028
-    - UNRES029
-    - UNRES030
+    - [UNRES001](flightid)
+    - [UNRES002](flightid)
+    - [UNRES003](flightid)
+    - [UNRES004](flightid)
+    - [UNRES005](flightid)
+    - [UNRES006](flightid)
+    - [UNRES007](flightid)
+    - [UNRES008](flightid)
+    - [UNRES009](flightid)
+    - [UNRES010](flightid)
+    - [UNRES011](flightid)
+    - [UNRES012](flightid)
+    - [UNRES013](flightid)
+    - [UNRES014](flightid)
+    - [UNRES015](flightid)
+    - [UNRES016](flightid)
+    - [UNRES017](flightid)
+    - [UNRES018](flightid)
+    - [UNRES019](flightid)
+    - [UNRES020](flightid)
+    - [UNRES021](flightid)
+    - [UNRES022](flightid)
+    - [UNRES023](flightid)
+    - [UNRES024](flightid)
+    - [UNRES025](flightid)
+    - [UNRES026](flightid)
+    - [UNRES027](flightid)
+    - [UNRES028](flightid)
+    - [UNRES029](flightid)
+    - [UNRES030](flightid)
   
 - intent: inform_name
   examples: |
-    - Hong Gildong
-    - Kim Minseo
-    - Lee Yeonghee
-    - Park Youngsoo
-    - Jung Jihye
-    - Choi Seunghyun
-    - Han Jimin
-    - Song Mijin
-    - Ryu Jinwoo
-    - Jang Minho
-    - Kang Jiyoung
-    - Shin Hyunwoo
-    - Lim Eunji
-    - Oh Junho
-    - Yoon Seoyeon
-    - Heo Yeosol
-    - Yang gijoo
+    - My name is [Hong Gildong](name)
+    - my name is [Kim Minseo](name)
+    - my name is [Lee Yeonghee](name)
+    - my name is [Park Youngsoo](name)
+    - my name is [Jung Jihye](name)
+    - my name is [Choi Seunghyun](name)
+    - my name is [Han Jimin](name)
+    - My name is [Song Mijin](name)
+    - My name is [Ryu Jinwoo](name)
+    - My name is [Jang Minho](name)
+    - My name is [Kang Jiyoung](name)
+    - [Shin Hyunwoo](name)
+    - [Lim Eunji](name)
+    - [Oh Junho](name)
+    - [Yoon Seoyeon](name)
+    - [Heo Yeosol](name)
+    - [Yang gijoo](name)
+    - [Kim minseo](name)
 
 - intent: inform_for_reservation
   examples: |
-    - Flight id is [UNRES001](inform_flightid) and my name is [Kim minseo](inform_name)
-    - I want to book [UNRES001](inform_flightid) and my name is [Kim minseo](inform_name)
-    - Flight id is [UNRES031](inform_flightid) and my name is [Kim minseo](inform_name)
-    - Flight id is [UNRES032](inform_flightid) and my name is [Kim minseo](inform_name)
-    - Flight id is [UNRES033](inform_flightid) and my name is [Kim minseo](inform_name)
-    - Flight id is [UNRES031](inform_flightid) and my name is [Hong Gildong](inform_name)
-    - Flight id is [UNRES032](inform_flightid) and my name is [Hong Gildong](inform_name)
-    - Flight id is [UNRES033](inform_flightid) and my name is [Hong Gildong](inform_name)
+    - Flight id is [UNRES001](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES002](flightid) and my name is [Kim Minseo](name)
+    - I want to book [UNRES001](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES031](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES032](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES033](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES031](flightid) and my name is [Hong Gildong](name)
+    - Flight id is [UNRES032](flightid) and my name is [Hong Gildong](name)
+    - Flight id is [UNRES033](flightid) and my name is [Hong Gildong](name)
