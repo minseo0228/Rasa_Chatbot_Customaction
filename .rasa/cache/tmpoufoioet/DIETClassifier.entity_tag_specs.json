@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-class",
+      "2": "I-class",
+      "3": "L-class",
+      "4": "U-class",
+      "5": "B-destination",
+      "6": "I-destination",
+      "7": "L-destination",
+      "8": "U-destination",
+      "9": "B-flightid",
+      "10": "I-flightid",
+      "11": "L-flightid",
+      "12": "U-flightid",
+      "13": "B-name",
+      "14": "I-name",
+      "15": "L-name",
+      "16": "U-name",
+      "17": "B-origin",
+      "18": "I-origin",
+      "19": "L-origin",
+      "20": "U-origin",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-class": 1,
+      "I-class": 2,
+      "L-class": 3,
+      "U-class": 4,
+      "B-destination": 5,
+      "I-destination": 6,
+      "L-destination": 7,
+      "U-destination": 8,
+      "B-flightid": 9,
+      "I-flightid": 10,
+      "L-flightid": 11,
+      "U-flightid": 12,
+      "B-name": 13,
+      "I-name": 14,
+      "L-name": 15,
+      "U-name": 16,
+      "B-origin": 17,
+      "I-origin": 18,
+      "L-origin": 19,
+      "U-origin": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

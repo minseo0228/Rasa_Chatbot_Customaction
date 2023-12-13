@@ -16,22 +16,23 @@ class ActionFindFlight(Action):
 
         destination = tracker.get_slot('destination')
         origin = tracker.get_slot('origin')
+        classes = tracker.get_slot('class')
+        month = tracker.get_slot('month')
 
         # Connect to MySQL and retrieve available flights to the destination
         con = pymysql.connect(host='localhost', user='root', password='@rlaalstj0228@', db='rasa3', charset='utf8')
         cur = con.cursor()
         print("connect")
 
-        sql = f"SELECT * FROM flight WHERE destination = '{destination}'AND origin = '{origin}'"
+        sql = f"SELECT * FROM flight WHERE destination = '{destination}'AND origin = '{origin}' AND class = '{classes}' AND month = '{month}'"
         cur.execute(sql)
         result = cur.fetchall()
 
         # flights = [f"Flight ID: {row['flight_id']} | Departure Time: {row['departure_time']}" for row in result]
-        flights = [f"Flight ID: {row[0]} | Departure Time: {row[3]}" for row in result]  
+        flights = [f"Flight ID: {row[0]} | Departure Time: {row[3]} | class : {row[5]}" for row in result]  
         flight_list = ", ".join(flights)
         print(f"Flights: {flights}")
         print(f"Flight List: {flight_list}")
-
         con.close()
 
         if len(flights) > 0:
@@ -44,7 +45,7 @@ class ActionFindFlight(Action):
                 dispatcher.utter_message(text=f"Flights available to {destination} from {origin}:")
                 for flight_info in flights:
                     dispatcher.utter_message(text=f"{flight_info}")
-                dispatcher.utter_message(text="Let's move on to the reservation stage!!")
+                dispatcher.utter_message(text=f"you choose {classes} class and month : {month}")
 
         else:
             dispatcher.utter_message(text=f"No flights available from {origin} to {destination}")

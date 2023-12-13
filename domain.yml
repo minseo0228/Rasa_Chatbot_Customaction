@@ -9,14 +9,20 @@ intents:
   - inform_for_reservation
   - inform_name
   - inform_flightid
+  - class
+  - month
+  - affirm
+  - deny
+  - hello
 
 entities:
   - origin
   - destination
   - name
-  - inform_month
   - flightid
-  
+  - class
+  - month
+
 slots:
   origin:
     type: text
@@ -38,36 +44,71 @@ slots:
     mappings: 
       - type: from_entity
         entity: name
-
+  month:
+    type: text
+    mappings: 
+      - type: from_entity
+        entity: month
+  class:
+    type: text
+    mappings: 
+      - type: from_entity
+        entity: class
+  
 
 actions:
-- action_find_flight
-- action_make_reservation
-- action_check_reservation
-- action_cancel_reservation
-- utter_ask_month
-- utter_ask_reservation_confirmation
-- utter_ask_flight_id_for_reservation
-- utter_ask_customer_name
-- utter_ask_origin
-- utter_ask_destination
-- check_reservation
+  - action_find_flight
+  - action_make_reservation
+  - action_check_reservation
+  - action_cancel_reservation
+  - utter_ask_month
+  - utter_ask_reservation_confirmation
+  - utter_ask_flight_id_for_reservation
+  - utter_ask_customer_name
+  - utter_ask_origin
+  - utter_ask_destination
+  - check_reservation
+  - utter_ask_class
+  - utter_confirm_check_reservation
+  - utter_ask_flightid_and_name
+  - utter_ask_cancel
+  - utter_say_hello
 
 responses:
   utter_ask_month:
     - text: "Which month are you looking to fly?"
+
   utter_ask_origin_destination:
-    - text: "Please enter the departure and destination cities."
-  # utter_ask_reservation_confirmation:
-  #   - text: "Would you like to proceed with the reservation?"
+    - text: "Oh you want to book a flight! Please enter the departure and destination cities."
+
+  utter_ask_reservation_confirmation:
+    - text: "Would you like to proceed with the reservation?"
+
   utter_ask_flight_id_for_reservation:
-    - text: "Let's move on to the reservation stage!! Which flight would you like to reserve? Please provide the flight ID. "
+    - text: "Let's move on to the reservation stage! Which flight would you like to reserve? Please provide the flight ID."
+
   utter_ask_customer_name:
     - text: "Please enter your name for the reservation."
+
   utter_ask_flight_id_and_customer_name:
-    - text: "Which flight would you like to reserve? Please provide the flight ID. and provide your name please"
+    - text: "Which flight would you like to reserve? Please provide the flight ID and your name, please."
+
+  utter_ask_class:
+    - text: "Which class of seats on the plane do you want to reserve? Please choose between first, business, and economy class."
+
+  utter_confirm_check_reservation:
+    - text: "Do you want to check a reservation?"
+
   utter_ask_flightid_and_name:
-    - text: "Tell me your name and flight id when you make a reservation"
+    - text : "please enter your name and flightid when you make a reservation."
+
+  utter_ask_cancel:
+    - text: "If you want to cancel the flight please say 'cancel' or 'I want to canel'"
+
+  utter_say_hello:
+    - text: "Hello, this is Database Aviation. You can make a reservation, cancel your reservation, or check your reservation here.
+If you want to proceed with the reservation, please tell me 'I want to book a flight.'"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

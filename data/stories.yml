@@ -3,12 +3,22 @@ version: "3.1"
 stories:
 - story: Book Flight
   steps:
+  - intent: hello
+  - action: utter_say_hello
   - intent: make_reservation
   - action: utter_ask_origin_destination
   - intent: inform_des_ori
     entities: 
       - origin
       - destination
+  - action: utter_ask_class
+  - intent: class
+    entities:
+      - class
+  - action: utter_ask_month
+  - intent: month
+    entities:
+      - month
   - action: action_find_flight
   - action: utter_ask_flight_id_and_customer_name
   - intent: inform_for_reservation
@@ -16,6 +26,23 @@ stories:
       - flightid
       - name
   - action: action_make_reservation
+  - action: utter_confirm_check_reservation
+  - intent: affirm
+  - action: utter_ask_customer_name
+  - intent: inform_name
+    entities:
+    - name
+  - action: action_check_reservation
+  - action: utter_ask_cancel
+  - intent: cancel_reservation
+  - action: utter_ask_flightid_and_name
+  - intent: inform_for_reservation
+    entities:
+    - name
+    - flightid
+  - action: action_cancel_reservation
+
+
 
 
 - story: Check Reservation
@@ -37,34 +64,3 @@ stories:
     - flightid
   - action: action_cancel_reservation
 
-# stories:
-# - story: Book Flight
-#   steps:
-#   - intent: make_reservation
-#   # - action: utter_ask_month
-#   # - intent: inform_month
-#   # - or:
-#   #   - slot_was_set:
-#   #     - inform_month: "May"  # 실제로 사용될 월
-#   - action: utter_ask_origin
-#   - intent: origin
-#   - action: utter_ask_destination
-#   - intent: destination
-#   # - action: utter_ask_origin_destination
-#   # - intent: inform_des_ori
-#   # - or:
-#   #   - slot_was_set:
-#   #     - origin: "Seoul"  # 실제로 사용될 출발지
-#   #     - destination: "Tokyo"  # 실제로 사용될 목적지
-#   - action: action_find_flight
-#   - action: utter_ask_flight_id_for_reservation
-#   - intent: inform_flightid
-#   - or:
-#     - slot_was_set:
-#       - inform_flightid: "UNRES001"  # 사용자가 선택한 실제 비행기표 ID
-#   - action: utter_ask_customer_name
-#   - intent: inform_name
-#   - or:
-#     - slot_was_set:
-#       - inform_name: "Kim Minseo"  # 사용자가 입력하는 예약자 이름
-#   - action: action_make_reservation

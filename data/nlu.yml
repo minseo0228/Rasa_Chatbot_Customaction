@@ -1,6 +1,14 @@
 version: "3.1"
 
 nlu:
+- intent: hello
+  examples: |
+    - hello
+    - hi
+    - start
+    - Hello
+    - Hi
+    
 - intent: inform_des_ori
   examples: |
     - I want to find a flight from [Seoul](origin) to [Newyork](destination)
@@ -81,21 +89,22 @@ nlu:
     - cancel
     - I want to cancel my reservation
     - Cancel
+    - I want to cancel
 
-- intent: inform_month
+- intent: month
   examples: |
-    - January
-    -	February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
+    - [January](month)
+    -	[February](month)
+    - [March](month)
+    - [April](month)
+    - [May](month)
+    - [June](month)
+    - [July](month)
+    - [August](month)
+    - [September](month)
+    - [October](month)
+    - [November](month)
+    - [December](month)
 
 - intent: affirm
   examples: |
@@ -133,7 +142,7 @@ nlu:
     - [UNRES028](flightid)
     - [UNRES029](flightid)
     - [UNRES030](flightid)
-  
+
 - intent: inform_name
   examples: |
     - My name is [Hong Gildong](name)
@@ -166,3 +175,33 @@ nlu:
     - Flight id is [UNRES031](flightid) and my name is [Hong Gildong](name)
     - Flight id is [UNRES032](flightid) and my name is [Hong Gildong](name)
     - Flight id is [UNRES033](flightid) and my name is [Hong Gildong](name)
+    - Flight id is [UNRES035](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES034](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES036](flightid) and my name is [Kim Minseo](name)
+    - Flight id is [UNRES037](flightid) and my name is [Kim Minseo](name)
+- intent: class
+  examples: |
+    - I want [buisness](class) class
+    - [buisness](class)
+    - [buisness](class) class
+    - I want [economy](class) class
+    - [economy](class)
+    - [economy](class) class
+    - I want [first](class) class
+    - [first](class)
+    - [first](class) class
+
+- intent: affirm
+  examples: |
+    - Yes
+    - Yeah
+    - Sure
+    - Absolutely
+    - Of course
+
+- intent: deny
+  examples: |
+    - No
+    - Nope
+    - I disagree
+    - Not at all
